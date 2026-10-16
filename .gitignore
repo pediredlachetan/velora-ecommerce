@@ -25,3 +25,10 @@ media/
 *.log
 .DS_Store
 Thumbs.db
+
+# Database exports
+sqlite_data.json
+sqlite_data_clean.json
+
+# Collected static files
+staticfiles/
