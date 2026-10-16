@@ -1,5 +1,5 @@
 """
-WSGI config for qelvanta project.
+WSGI config for velora project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,5 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'qelvanta.settings')
-
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'velora.settings')
 application = get_wsgi_application()
