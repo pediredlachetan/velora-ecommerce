@@ -1,0 +1,1486 @@
+
+/* ==============================
+   QELVANTA - PREMIUM STOREFRONT
+   ============================== */
+
+:root {
+    --bg: #0b0d14;
+    --surface: #141824;
+    --surface-hover: #1b2030;
+    --text: #f5f6fa;
+    --muted: #a4aabd;
+    --accent: #8b7cff;
+    --border: #292e40;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0b0d14;
+    color: #f5f6fa;
+    line-height: 1.6;
+}
+
+/* Navigation */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 6%;
+    background: #0b0d14;
+    border-bottom: 1px solid #292e40;
+}
+
+.logo {
+    color: #f5f6fa;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #8b7cff;
+}
+
+.nav-link {
+    color: #d7d9e4;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    color: #8b7cff;
+}
+
+/* Hero section */
+
+.hero {
+    padding: 65px 6% 55px;
+    text-align: center;
+    background:
+        radial-gradient(
+            ellipse at top,
+            rgba(139, 124, 255, 0.16),
+            transparent 65%
+        );
+}
+
+.hero-label {
+    color: #a99fff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    max-width: 850px;
+    margin: 15px auto;
+    font-size: clamp(36px, 5vw, 62px);
+    line-height: 1.12;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: #a99fff;
+}
+
+.hero p {
+    max-width: 570px;
+    margin: 18px auto 0;
+    color: #a4aabd;
+    font-size: 16px;
+}
+
+/* Main content */
+
+.container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 5% 60px;
+}
+
+
+.section-heading {
+    margin: 0 0 8px;
+    font-size: 29px;
+    letter-spacing: -0.5px;
+}
+
+.section-description {
+    margin: 0 0 25px;
+    color: #a4aabd;
+    font-size: 14px;
+}
+
+/* Search */
+
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 650px;
+    gap: 10px;
+    margin: 30px auto 45px;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 0;
+    padding: 15px 18px;
+    border: 1px solid #292e40;
+    border-radius: 10px;
+    background: #141824;
+    color: #f5f6fa;
+    font-size: 15px;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #858ba0;
+}
+
+.search-input:focus {
+    border-color: #8b7cff;
+    box-shadow: 0 0 0 3px rgba(139, 124, 255, 0.12);
+}
+
+.search-button {
+    padding: 14px 24px;
+    border: 0;
+    border-radius: 10px;
+    background: #8b7cff;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.search-button:hover {
+    background: #7463ed;
+}
+
+/* Product grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+
+
+/* Product cards */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    padding: 15px;
+    background: #141824;
+    border: 1px solid #292e40;
+    border-radius: 15px;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    background: #1b2030;
+    border-color: #6659c5;
+}
+
+.product-image-link {
+    display: block;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.product-card img {
+    display: block;
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    object-fit: contain;
+    background: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.035);
+}
+
+.product-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 12px 4px 4px;
+}
+
+.product-card h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.product-card h3 a {
+    color: #f5f6fa;
+    text-decoration: none;
+}
+
+.product-card h3 a:hover {
+    color: #a99fff;
+}
+
+.product-description {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0 0 14px;
+    color: #a4aabd;
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.product-price {
+    margin: auto 0 14px;
+    padding-top: 4px;
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.view-button {
+    display: block;
+    padding: 11px 14px;
+    border: 1px solid #45405f;
+    border-radius: 8px;
+    background: transparent;
+    color: #c4bcff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.view-button:hover {
+    background: #8b7cff;
+    border-color: #8b7cff;
+    color: #ffffff;
+}
+
+/* Empty search results */
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 45px 20px;
+    border: 1px dashed #45405f;
+    border-radius: 12px;
+    color: #a4aabd;
+    text-align: center;
+}
+
+/* Product detail page */
+
+.detail-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 6% 70px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 28px;
+    color: #b8afff;
+    text-decoration: none;
+}
+
+.detail-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 45px;
+    align-items: center;
+    padding: 28px;
+    border: 1px solid #292e40;
+    border-radius: 18px;
+    background: #141824;
+}
+
+.detail-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.detail-image img {
+    display: block;
+    width: 100%;
+    height: 380px;
+    padding: 15px;
+    object-fit: contain;
+}
+
+.detail-info h1 {
+    margin: 0 0 18px;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.2;
+}
+
+.detail-description {
+    color: #a4aabd;
+    line-height: 1.8;
+}
+
+.detail-price {
+    margin: 22px 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.stock-text {
+    color: #b8afff;
+    font-size: 14px;
+}
+
+/* Footer */
+
+.footer {
+    padding: 28px 6%;
+    border-top: 1px solid #292e40;
+    color: #858ba0;
+    text-align: center;
+    font-size: 13px;
+}
+
+.footer strong {
+    color: #f5f6fa;
+}
+
+/* Tablet */
+
+@media (max-width: 950px) {
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .detail-card {
+        gap: 25px;
+        padding: 20px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 17px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .hero {
+        padding: 48px 5% 40px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .container {
+        padding-right: 5%;
+        padding-left: 5%;
+        padding-bottom: 40px;
+    }
+
+    .section-heading {
+        font-size: 25px;
+    }
+
+    .search-form {
+        margin: 24px auto 32px;
+        gap: 7px;
+    }
+
+    .search-input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .search-button {
+        padding: 12px 14px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .product-card img {
+        height: 260px;
+    }
+
+    .detail-container {
+        padding: 28px 5% 45px;
+    }
+
+    .detail-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 15px;
+    }
+
+    .detail-image {
+        min-height: 260px;
+    }
+
+    .detail-image img {
+        height: 280px;
+    }
+
+    .detail-info h1 {
+        font-size: 30px;
+    }
+}
+.detail-image {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+.detail-image img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 380px;
+    object-fit: contain;
+    padding: 15px;
+}
+.search-form select {
+    width: auto;
+    max-width: 200px;
+    cursor: pointer;
+}
+
+.search-form select option {
+    background: #141824;
+    color: #f5f6fa;
+}
+
+@media (max-width: 600px) {
+    .search-form {
+        flex-wrap: wrap;
+    }
+
+    .search-form input,
+    .search-form select {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .search-form button {
+        width: 100%;
+    }
+}
+
+
+/* Qelvanta Shopping Cart */
+.container h1 {
+    color: var(--text);
+    margin-bottom: 28px;
+}
+
+.container > .product-card {
+    margin-bottom: 18px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+}
+
+.container .product-card h2 {
+    color: var(--text);
+    margin-bottom: 14px;
+}
+
+.container .product-card p {
+    color: var(--muted);
+    margin: 10px 0;
+}
+
+.container input[type="number"] {
+    width: 85px;
+    padding: 10px;
+    margin: 8px;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.container label {
+    color: var(--text);
+}
+
+.container form {
+    margin: 14px 0;
+}
+
+.container > h2 {
+    color: var(--text);
+    margin: 24px 0;
+}
+
+
+/* Cart action buttons */
+.container .product-card button.view-btn,
+.container button.view-btn,
+.container a.view-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.container .product-card button.view-btn:hover,
+.container button.view-btn:hover,
+.container a.view-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+
+.checkout-message {
+    margin: 20px 0;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    color: var(--text);
+}
+
+
+/* Checkout Form Styling */
+
+.container form:has(textarea) {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 550px;
+    margin-top: 25px;
+}
+
+.container form:has(textarea) label {
+    display: block;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.container form:has(textarea) input,
+.container form:has(textarea) textarea {
+    width: 100%;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.container form:has(textarea) input:focus,
+.container form:has(textarea) textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.container form:has(textarea) button {
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+
+
+
+.alert-warning {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #352713, #241e17);
+    color: #ffdc91;
+    border: 1px solid rgba(255, 190, 80, 0.35);
+    border-left: 4px solid #ffb84d;
+    padding: 18px 22px;
+    border-radius: 14px;
+    margin: 22px 0;
+    font-size: 15px;
+    line-height: 1.7;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Premium checkout refinements */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+}
+
+.container > h1 {
+    font-size: clamp(30px, 4vw, 42px);
+    letter-spacing: -1px;
+    margin-bottom: 28px;
+}
+
+.container .product-card {
+    background: linear-gradient(145deg, #191d2b, #121520);
+    border: 1px solid #292e40;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 24px 0;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+.container .product-card h2 {
+    margin-top: 0;
+    font-size: 25px;
+}
+
+.container .product-card p {
+    color: #b7c0d7;
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 24px 16px 40px;
+    }
+
+    .container .product-card {
+        padding: 20px;
+    }
+}
+
+
+/* Premium order confirmation items */
+.order-divider {
+    border: 0;
+    border-top: 1px solid #303548;
+    margin: 28px 0 22px;
+}
+
+.items-heading {
+    margin-bottom: 18px;
+    font-size: 20px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid #292e40;
+}
+
+.order-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.order-item-info h4 {
+    margin: 0 0 8px;
+    color: #f5f5ff;
+    font-size: 15px;
+}
+
+.order-item-info p {
+    margin: 0;
+    color: #a9b1c8;
+    font-size: 14px;
+}
+
+.order-item-quantity {
+    color: #c5cbe0;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.order-item-subtotal {
+    color: #ffffff;
+    font-weight: 700;
+    white-space: nowrap;
+    min-width: 95px;
+    text-align: right;
+}
+
+.order-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #454b61;
+    font-size: 17px;
+}
+
+.order-total-row strong {
+    color: #a394ff;
+    font-size: 21px;
+}
+
+@media (max-width: 600px) {
+    .order-item {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .order-item-info {
+        flex-basis: 55%;
+    }
+
+    .order-item-quantity {
+        font-size: 12px;
+    }
+
+    .order-item-subtotal {
+        min-width: auto;
+    }
+}
+
+
+/* Qelvanta authentication pages */
+.auth-card {
+    max-width: 440px;
+    margin: 55px auto;
+    padding: 32px;
+    background: #171a27;
+    border: 1px solid #303548;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+
+.auth-card h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.auth-card > p {
+    color: #b9bfd2;
+    line-height: 1.6;
+}
+
+.auth-card .form-group {
+    margin: 22px 0;
+}
+
+.auth-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e8eaff;
+}
+
+.auth-card input:not([type="hidden"]) {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    color: #ffffff;
+    background: #0d0f17;
+    border: 1px solid #383e54;
+    border-radius: 9px;
+    font: inherit;
+}
+
+.auth-card input:focus {
+    outline: 2px solid #8b7cff;
+    outline-offset: 2px;
+}
+
+.auth-submit {
+    width: 100%;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.auth-footer {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: #a394ff;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        margin: 30px 12px;
+        padding: 24px 18px;
+    }
+}
+
+
+/* Compact registration page */
+.auth-card {
+    max-width: 420px;
+    margin: 30px auto;
+    padding: 26px;
+}
+
+.auth-card h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.auth-card .form-group {
+    margin: 16px 0;
+}
+
+.auth-card .field-help {
+    margin-top: 6px;
+    color: #9da6bf;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.auth-card .helptext,
+.auth-card ul {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.auth-card ul {
+    padding-left: 20px;
+}
+
+.auth-card .auth-submit {
+    margin-top: 4px;
+}
+
+
+
+/* My Orders page */
+.my-orders-page {
+    max-width: 850px;
+    margin: 40px auto;
+}
+
+.my-orders-page > h1 {
+    margin-bottom: 8px;
+}
+
+.orders-intro {
+    color: #a9b1c8;
+    margin-bottom: 28px;
+}
+
+.my-order-card {
+    padding: 24px;
+    margin-bottom: 18px;
+    background: #171a27;
+    border: 1px solid #303548;
+    border-radius: 16px;
+}
+
+.my-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.my-order-header h3 {
+    margin: 0 0 8px;
+}
+
+.my-order-header p {
+    margin: 0;
+    color: #a9b1c8;
+    font-size: 14px;
+}
+
+.order-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #282642;
+    color: #c5baff;
+    font-size: 13px;
+}
+
+.my-order-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 22px 0;
+    padding-top: 18px;
+    border-top: 1px solid #303548;
+}
+
+.my-order-total strong {
+    color: #a394ff;
+}
+
+.order-details-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.my-orders-empty {
+    padding: 36px 20px;
+    text-align: center;
+    background: #171a27;
+    border: 1px solid #303548;
+    border-radius: 16px;
+}
+
+.my-orders-empty p {
+    color: #a9b1c8;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 480px) {
+    .my-order-card {
+        padding: 18px;
+    }
+
+    .my-order-header {
+        align-items: flex-start;
+    }
+}
+
+
+.nav-auth-form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.nav-auth-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+.nav-auth-button:hover {
+    color: #a394ff;
+}
+
+
+
+/* Premium Qelvanta navigation */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 5%;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    margin-left: auto;
+}
+
+.nav-account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-account form {
+    margin: 0;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.nav-button:hover {
+    transform: translateY(-1px);
+}
+
+.nav-button-outline {
+    color: #e6e4ff;
+    background: #171a27;
+    border-color: #45415f;
+}
+
+.nav-button-outline:hover {
+    background: #242139;
+    border-color: #8b7cff;
+}
+
+.nav-button-primary {
+    color: #ffffff;
+    background: #8b7cff;
+}
+
+.nav-button-primary:hover {
+    background: #7665ef;
+}
+
+@media (max-width: 850px) {
+    .navbar {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        justify-content: flex-start;
+    }
+
+    .nav-account {
+        margin-left: auto;
+        gap: 8px;
+    }
+
+    .nav-button {
+        padding: 0 12px;
+        font-size: 12px;
+    }
+}
+
+
+/* Qelvanta premium header - final override */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 5%;
+    min-height: 76px;
+    box-sizing: border-box;
+}
+
+.navbar .logo {
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    margin-left: auto;
+}
+
+.navbar .nav-links > .nav-link {
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar .nav-account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .nav-account form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.navbar .nav-account .nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.navbar .nav-account .nav-button:hover {
+    transform: translateY(-1px);
+}
+
+.navbar .nav-account .nav-button-outline {
+    color: #e6e4ff;
+    background: #171a27;
+    border-color: #45415f;
+}
+
+.navbar .nav-account .nav-button-outline:hover {
+    background: #242139;
+    border-color: #8b7cff;
+}
+
+.navbar .nav-account .nav-button-primary {
+    color: #fff;
+    background: #8b7cff;
+}
+
+.navbar .nav-account .nav-button-primary:hover {
+    background: #7665ef;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .navbar .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .nav-links {
+        justify-content: flex-start;
+    }
+
+    .navbar .nav-account {
+        margin-left: auto;
+        gap: 8px;
+    }
+
+    .navbar .nav-account .nav-button {
+        padding: 0 12px;
+        font-size: 12px;
+    }
+}
+
+
+/* VELORA — Order details enhancements */
+.order-status {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(139, 116, 255, 0.16);
+    color: #a995ff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 22px 0;
+    border-bottom: 1px solid #303447;
+}
+
+.order-item p {
+    margin: 6px 0;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid #41445b;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.order-total strong {
+    color: #9b87ff;
+    font-size: 22px;
+}
+
+@media (max-width: 600px) {
+    .order-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .order-total {
+        font-size: 16px;
+    }
+
+    .order-total strong {
+        font-size: 19px;
+    }
+}
+
+
+/* VELORA order tracking - permanent fix */
+.order-timeline {
+    display: block;
+    padding: 24px;
+    margin: 32px 0;
+    border: 1px solid #303447;
+    border-radius: 16px;
+    background: #171a27;
+}
+
+.tracking-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.tracking-step:last-child {
+    margin-bottom: 0;
+}
+
+.tracking-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    margin-top: 3px;
+    border: 2px solid #9b87ff;
+    border-radius: 50%;
+    background: #171a27;
+}
+
+.tracking-step.completed .tracking-dot {
+    background: #9b87ff;
+    border-color: #9b87ff;
+    box-shadow: 0 0 12px rgba(155, 135, 255, 0.35);
+}
+
+
+/* Order tracking vertical line */
+.order-timeline {
+    position: relative;
+}
+
+.tracking-step {
+    position: relative;
+    padding-left: 28px;
+    min-height: 60px;
+}
+
+.tracking-dot {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    z-index: 1;
+}
+
+.tracking-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 18px;
+    height: calc(100% - 8px);
+    width: 2px;
+    background: #34364a;
+}
+
+.tracking-step.completed:not(:last-child)::after {
+    background: #987bff;
+}
+
+/* Compact order tracking layout */
+.tracking-step {
+    min-height: 0;
+    margin-bottom: 18px;
+}
+
+.tracking-step:last-child {
+    margin-bottom: 0;
+}
+
+.tracking-step p {
+    margin-bottom: 0;
+}
+
+.order-timeline {
+    padding: 20px;
+}
+
+
+/* VELORA cancel order button */
+.btn-cancel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    padding: 12px 22px;
+    border: 1px solid #773b4b;
+    border-radius: 10px;
+    background: #2b1720;
+    color: #ff9aab;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-cancel:hover {
+    background: #47202d;
+    transform: translateY(-1px);
+}
+
+.btn-cancel:focus-visible {
+    outline: 2px solid #ff9aab;
+    outline-offset: 3px;
+}
+
+
+
+/* VELORA - Product Reviews */
+.reviews-section {
+    margin-top: 42px;
+    padding-top: 28px;
+    border-top: 1px solid #303447;
+}
+
+.reviews-section h2 {
+    margin-bottom: 22px;
+    font-size: 23px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 520px;
+    margin: 22px 0 30px;
+}
+
+.review-form label {
+    color: #e7e9f4;
+    font-weight: 600;
+}
+
+.review-form select,
+.review-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #383d53;
+    border-radius: 9px;
+    background: #10131e;
+    color: #f4f5fb;
+    font: inherit;
+}
+
+.review-form select:focus,
+.review-form textarea:focus {
+    outline: 2px solid #9b82ff;
+    outline-offset: 2px;
+}
+
+.review-form textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.review-submit-btn {
+    padding: 12px 20px;
+    border: 1px solid #9b82ff;
+    border-radius: 9px;
+    background: #8b70f5;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.review-submit-btn:hover {
+    background: #7558df;
+    transform: translateY(-1px);
+}
+
+.reviews-list {
+    display: grid;
+    gap: 14px;
+}
+
+.review-card {
+    padding: 18px;
+    border: 1px solid #303447;
+    border-radius: 12px;
+    background: #171b29;
+}
+
+.review-card h3 {
+    margin: 0 0 8px;
+}
+
+.review-card .review-stars {
+    color: #ffc857;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.review-card small {
+    color: #a5abc1;
+}

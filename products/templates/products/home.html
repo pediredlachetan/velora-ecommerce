@@ -1,0 +1,180 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0d14">
+    <title>Qelvanta | Discover More. Shop Better.</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}?v=2">
+</head>
+<body>
+    
+    <header class="navbar">
+        <a class="logo" href="{% url 'home' %}"> VELORA<span>.</span> </a>
+        <nav class="nav-links">
+            <a class="nav-link" href="#products">Explore Products ↓</a>
+            <a class="nav-link" href="{% url 'cart' %}">
+                My Cart 🛒 ({{ cart_count|default:0 }})
+            </a>
+
+            <div class="nav-account">
+                {% if user.is_authenticated %}
+                    <a class="nav-button nav-button-outline" href="{% url 'my_orders' %}"> My Orders </a>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                    <button class="nav-button nav-button-primary" type="submit"> Log Out </button>
+                    </form>
+                {% else %}
+                    <a class="nav-button nav-button-outline" href="{% url 'login' %}"> Log In </a>
+                    <a class="nav-button nav-button-primary" href="{% url 'register' %}"> Create Account </a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="hero">
+        <div class="hero-label">A Curated Shopping Experience</div>
+
+        <h1>
+            Discover More.<br>
+            <span>Shop Better.</span>
+        </h1>
+
+        <p>
+            Thoughtfully selected essentials for your everyday life.
+            Find your next favourite with Qelvanta.
+        </p>
+
+        
+        <form class="search-form" method="GET" action="{% url 'home' %}">
+            <input
+                class="search-input"
+                type="text"
+                name="q"
+                placeholder="Search products by name..."
+                value="{{ query }}"
+                aria-label="Search products"
+            >
+
+            <select name="category" class="search-input" aria-label="Filter by category">
+                <option value="">All Categories</option>
+
+                {% for category in categories %}
+                <option
+                    value="{{ category }}"
+                    {% if selected_category == category %}selected{% endif %}
+                >
+                    {{ category }}
+                </option>
+                 {% endfor %}
+            </select>
+            
+            <select name="sort" class="search-input" aria-label="Sort products">
+
+                <option value="" {% if not sort_by %}selected{% endif %}> Recommended </option>
+                <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}> Price: Low to High </option>
+                <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}> Price: High to Low </option>
+                <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}> Newest First </option>
+            
+            </select>
+
+            <button class="search-button" type="submit"> Search </button>
+            
+        </form>
+
+    </section>
+
+    <main class="container" id="products">
+        <h2 class="section-heading">Explore Our Collection</h2>
+        <p class="section-description">
+            Find something that fits your style.
+        </p>
+
+        <div class="product-grid">
+            {% for product in products %}
+                <article class="product-card">
+
+                    {% if product.image %}
+                        <a
+                            class="product-image-link"
+                            href="{% url 'product_detail' product.id %}"
+                            aria-label="View {{ product.name }}"
+                        >
+                            <img
+                                src="{{ product.image.url }}"
+                                alt="{{ product.name }}"
+                                loading="lazy"
+                            >
+                        </a>
+                    {% endif %}
+
+                    <div class="product-info">
+                        <h3>
+                            <a href="{% url 'product_detail' product.id %}">
+                                {{ product.name }}
+                            </a>
+                        </h3>
+
+                        <p class="product-description">
+                            {{ product.description }}
+                        </p>
+
+                        <p class="product-price">
+                            ₹{{ product.price }}
+                        </p>
+
+                        <a
+                            class="view-button"
+                            href="{% url 'product_detail' product.id %}"
+                        >
+                            View Product &rarr;
+                        </a>
+                    </div>
+
+                </article>
+            {% empty %}
+                <div class="empty-state">
+                    <h3>No products found</h3>
+                    <p>Try a different search or browse all products.</p>
+                    <a class="view-button" href="{% url 'home' %}">
+                        View All Products
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        
+        {% if page_obj.has_other_pages %}
+            <nav class="pagination" aria-label="Product pages">
+
+                {% if page_obj.has_previous %}
+                    <a href="?q={{ query|urlencode }}&category={{ selected_category|urlencode }}&sort={{ sort_by|urlencode }}&page={{ page_obj.previous_page_number }}">
+                        &larr; Previous
+                    </a>
+                {% endif %}
+
+                <span>
+                     Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?q={{ query|urlencode }}&category={{ selected_category|urlencode }}&sort={{ sort_by|urlencode }}&page={{ page_obj.next_page_number }}">
+                        Next &rarr;
+                    </a>
+                {% endif %}
+
+            </nav>
+        {% endif %}
+
+    </main>
+
+    <footer class="footer">
+        <strong>QELVANTA.</strong>
+        <p>Discover More. Shop Better.</p>
+        <p>&copy; 2026 Qelvanta. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

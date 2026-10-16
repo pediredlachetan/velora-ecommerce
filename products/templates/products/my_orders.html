@@ -1,0 +1,55 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | Qelvanta</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}?v=4">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="{% url 'home' %}">
+            VELORA<span>.</span>
+        </a>
+        <a class="nav-link" href="{% url 'home' %}">Continue Shopping</a>
+    </header>
+
+    <main class="container">
+        <section class="my-orders-page">
+            <h1>My Orders</h1>
+            <p class="orders-intro">Track and review your purchases.</p>
+
+            {% for order in orders %}
+                <article class="my-order-card">
+                    <div class="my-order-header">
+                        <div>
+                            <h3>Order #{{ order.id }}</h3>
+                            <p>{{ order.created_at|date:"d M Y, h:i A" }}</p>
+                        </div>
+                        <span class="order-status">
+                            {{ order.status|title }}
+                        </span>
+                    </div>
+
+                    <div class="my-order-total">
+                        <span>Total Amount</span>
+                        <strong>₹{{ order.total_amount|floatformat:2 }}</strong>
+                    </div>
+
+                    <a class="view-btn" href="{% url 'order_detail' order.id %}">  View Order Details </a>
+                </article>
+            {% empty %}
+                <div class="my-orders-empty">
+                    <h2>No orders yet</h2>
+                    <p>Your purchases will appear here after checkout.</p>
+                    <a class="view-btn" href="{% url 'home' %}">
+                        Start Shopping
+                    </a>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

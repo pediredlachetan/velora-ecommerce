@@ -1,0 +1,59 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | Qelvanta</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}?v=3">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="{% url 'home' %}">
+            VELORA<span>.</span>
+        </a>
+        <a class="nav-link" href="{% url 'home' %}">Continue Shopping</a>
+    </header>
+
+    <main class="container">
+        <div class="auth-card">
+            <h1>Create Account</h1>
+            <p>Join Qelvanta to keep track of your orders.</p>
+
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="alert-warning">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
+
+                        {{ field }}
+
+                        {% for error in field.errors %}
+                            <p class="alert-warning">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="view-btn auth-submit">
+                    Create Account
+                </button>
+            </form>
+
+            <p class="auth-footer">
+                Already have an account?
+                <a href="{% url 'login' %}">Log in</a>
+            </p>
+        </div>
+    </main>
+</body>
+</html>

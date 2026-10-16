@@ -1,0 +1,78 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Qelvanta</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}?v=2">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="{% url 'home' %}">
+            VELORA<span>.</span>
+        </a>
+        <a class="nav-link" href="{% url 'cart' %}">Back to Cart</a>
+    </header>
+
+    <main class="container">
+        <h1>Checkout</h1>
+        
+        
+        {% if message %}
+            <div class="alert-warning" role="alert"> ⚠️ {{ message }} </div>
+        {% endif %}
+
+
+        <p>Review your order before placing it.</p>
+
+        {% if items %}
+            {% for item in items %}
+                <div class="product-card">
+                    <h2>{{ item.product.name }}</h2>
+                    <p>Price: ₹{{ item.product.price }}</p>
+                    <p>Quantity: {{ item.quantity }}</p>
+                    <p>Subtotal: ₹{{ item.subtotal }}</p>
+                </div>
+            {% endfor %}
+
+            <h2>Order Total: ₹{{ total }}</h2>
+
+            <p>
+                This is a demo checkout. No payment will be processed.
+            </p>
+            
+            <form method="post">
+                {% csrf_token %}
+
+                <h2>Delivery Details</h2>
+
+                <label for="full_name">Full Name</label>
+                <input type="text" id="full_name" name="full_name" required>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10" required>
+
+                <label for="address">Delivery Address</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+
+                <button type="submit" class="view-btn">
+                    Submit Details
+                </button>
+            </form>
+
+
+            <button type="button" class="view-btn" disabled>
+                Checkout Coming Soon
+            </button>
+        {% else %}
+            <p>Your cart is empty. Add products before checkout.</p>
+            <a href="{% url 'home' %}" class="view-btn">
+                Explore Products
+            </a>
+        {% endif %}
+    </main>
+</body>
+</html>

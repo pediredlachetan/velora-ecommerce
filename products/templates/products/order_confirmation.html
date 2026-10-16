@@ -1,0 +1,71 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed | Qelvanta</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}?v=2">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="{% url 'home' %}">vVELORA<span>.</span></a>
+        <a class="nav-link" href="{% url 'home' %}">Continue Shopping</a>
+    </header>
+
+    <main class="container">
+        <h1>Order Confirmed!</h1>
+
+        <p>Thank you for shopping with Qelvanta.</p>
+
+        <div class="product-card">
+            <h2>Order Details</h2>
+
+            <p>Order ID: #{{ order.id }}</p>
+            <p>Customer: {{ order.full_name }}</p>
+            <p>Order Total: ₹{{ order.total_amount }}</p>
+            <p>Status: {{ order.get_status_display }}</p>
+            <p>Order Date: {{ order.created_at|date:"d M Y, h:i A" }}</p>
+            
+            <hr>
+            
+            <hr class="order-divider">
+
+            <h3 class="items-heading">Items Purchased</h3>
+
+            {% for item in order.items.all %}
+                <div class="order-item">
+                    <div class="order-item-info">
+                        <h4>{{ item.product_name }}</h4>
+                        <p>₹{{ item.price|floatformat:2 }} each</p>
+                    </div>
+
+                    <div class="order-item-quantity">
+                        Qty: {{ item.quantity }}
+                    </div>
+
+                    <div class="order-item-subtotal">
+                        ₹{{ item.subtotal|floatformat:2 }}
+                    </div>
+                </div>
+            {% empty %}
+                <p>No item details available for this order.</p>
+            {% endfor %}
+
+            <div class="order-total-row">
+                <span>Grand Total</span>
+                <strong>₹{{ order.total_amount|floatformat:2 }}</strong>
+            </div>
+
+
+        </div>
+
+        <p>Your order has been recorded successfully.</p>
+
+        <a href="{% url 'home' %}" class="view-btn">
+            Continue Shopping
+        </a>
+    </main>
+</body>
+</html>

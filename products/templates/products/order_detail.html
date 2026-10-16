@@ -1,0 +1,119 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details | VELORA</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}?v=2">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="{% url 'home' %}">
+            VELORA<span>.</span>
+        </a>
+        <a class="nav-link" href="{% url 'my_orders' %}">
+            Back to My Orders
+        </a>
+    </header>
+
+    <main class="container">
+        <h1>Order Details</h1>
+        <p>Review your purchase information.</p>
+
+        <div class="product-card">
+            <h2>Order #{{ order.id }}</h2>
+            <p>Status: <span class="order-status">{{ order.get_status_display }}</span></p>
+            <p>Order Date: {{ order.created_at|date:"d M Y, h:i A" }}</p>
+            <p>Customer: {{ order.full_name }}</p>
+            <p>Email: {{ order.email }}</p>
+            <p>Phone: {{ order.phone }}</p>
+            <p>Delivery Address: {{ order.address }}</p>
+
+            <hr>
+            
+            
+            <div class="order-timeline">
+                <h3>Order Tracking</h3>
+
+                {% if order.status == 'cancelled' %}
+                    <div class="tracking-step completed">
+                        <span class="tracking-dot"></span>
+                        <div>
+                            <h4>Order Cancelled</h4>
+                            <p>This order has been cancelled.</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="tracking-step {% if order.status == 'pending' or order.status == 'processing' or order.status == 'shipped' or order.status == 'delivered' %}completed{% endif %}">
+                        <span class="tracking-dot"></span>
+                        <div>
+                            <h4>Order Placed</h4>
+                            <p>Your order has been received.</p>
+                        </div>
+                    </div>
+
+                    <div class="tracking-step {% if order.status == 'processing' or order.status == 'shipped' or order.status == 'delivered' %}completed{% endif %}">
+                        <span class="tracking-dot"></span>
+                        <div>
+                            <h4>Processing</h4>
+                            <p>Your order is being prepared.</p>
+                        </div>
+                    </div>
+
+                    <div class="tracking-step {% if order.status == 'shipped' or order.status == 'delivered' %}completed{% endif %}">
+                        <span class="tracking-dot"></span>
+                        <div>
+                            <h4>Shipped</h4>
+                            <p>Your order is on its way.</p>
+                        </div>
+                    </div>
+
+                    <div class="tracking-step {% if order.status == 'delivered' %}completed{% endif %}">
+                        <span class="tracking-dot"></span>
+                        <div>
+                            <h4>Delivered</h4>
+                            <p>Your order has arrived.</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+
+            <h3>Items Purchased</h3>
+
+            {% for item in order.items.all %}
+                <div class="order-item">
+                    <strong>{{ item.product_name }}</strong>
+                    <p>Price: ₹{{ item.price|floatformat:2 }} each</p>
+                    <p>Quantity: {{ item.quantity }}</p>
+                    <p>Subtotal: ₹{{ item.subtotal|floatformat:2 }}</p>
+                </div>
+            {% empty %}
+                <p>No item details available for this order.</p>
+            {% endfor %}
+
+            <hr>
+            <div class="order-total">
+                <span>Grand Total</span>
+                <strong>₹{{ order.total_amount|floatformat:2 }}</strong>
+            </div>
+        </div>
+        
+        {% if order.status == 'pending' or order.status == 'processing' %}
+            <form method="POST" action="{% url 'cancel_order' order.id %}"
+                onsubmit="return confirm('Are you sure you want to cancel this order?');">
+                {% csrf_token %}
+                <button type="submit" class="btn-cancel">Cancel Order </button>
+            </form>
+        {% endif %}
+
+        <p>
+            <a class="view-btn" href="{% url 'my_orders' %}">
+                Back to My Orders
+            </a>
+        </p>
+    </main>
+</body>
+</html>

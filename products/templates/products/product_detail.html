@@ -1,0 +1,135 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0d14">
+    <title>{{ product.name }} | Qelvanta</title>
+    <link rel="stylesheet" href="{% static 'products/style.css' %}?v=3">
+</head>
+<body>
+
+    <header class="navbar">
+        <a class="logo" href="{% url 'home' %}">
+            VELORA<span>.</span>
+        </a>
+
+        <a class="nav-link" href="{% url 'home' %}">
+            Explore Collection
+        </a>
+    </header>
+
+    <main class="detail-container">
+
+        <a class="back-link" href="{% url 'home' %}">
+            &larr; Back to collection
+        </a>
+
+        <section class="detail-card">
+
+            <div class="detail-image">
+                {% if product.image %}
+                    <img
+                        src="{{ product.image.url }}"
+                        alt="{{ product.name }}"
+                    >
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+            </div>
+
+            <div class="detail-info">
+
+                <p class="hero-label">QELVANTA COLLECTION</p>
+
+                <h1>{{ product.name }}</h1>
+
+                <p class="detail-description">
+                    {{ product.description }}
+                </p>
+
+                <p class="detail-price">
+                    ₹{{ product.price }}
+                </p>
+
+                <p class="stock-text">
+                    Available stock: {{ product.stock }}
+                </p>
+                
+                <form action="{% url 'add_to_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="view-btn"> Add to Cart </button>
+                </form>
+
+                <a class="view-button" href="{% url 'home' %}">
+                    Continue Shopping &rarr;
+                </a>
+
+            </div>
+                    
+            <section class="reviews-section">
+                <h2>Customer Reviews</h2>
+
+                {% if user.is_authenticated %}
+                    {% if not reviews %}
+                        <p>Be the first to review this product.</p>
+                    {% endif %}
+
+                    <form method="POST" class="review-form">
+                        {% csrf_token %}
+
+                        <label for="rating">Your Rating</label>
+                        <select name="rating" id="rating" required>
+                            <option value="">Select a rating</option>
+                            <option value="5">★★★★★ - Excellent</option>
+                            <option value="4">★★★★ - Very Good</option>
+                            <option value="3">★★★ - Good</option>
+                            <option value="2">★★ - Fair</option>
+                            <option value="1">★ - Poor</option>
+                        </select>
+
+                        <label for="comment">Your Review</label>
+                        <textarea name="comment" id="comment" rows="4" maxlength="1000" placeholder="Share your experience with this product..." required ></textarea>
+                        <button type="submit" class="review-submit-btn"> Submit Review </button>
+                    </form>
+            {% else %}
+                <p>
+                    <a href="{% url 'login' %}">Log in</a> to write a review. </p>
+            {% endif %}
+
+            <div class="reviews-list">
+                {% for review in reviews %}
+                    <article class="review-card">
+                        <h3>{{ review.user.username }}</h3>
+                        <p class="review-stars">
+                        {% for star in "12345" %}
+                            {% if forloop.counter <= review.rating %}
+                                ★
+                            {% else %}
+                                ☆
+                            {% endif %}
+                        {% endfor %}
+                        </p>
+                        <p>{{ review.comment }}</p>
+                        <small>{{ review.created_at|date:"d M Y" }}</small>
+                    </article>
+                {% empty %}
+                    <p>No reviews yet.</p>
+                {% endfor %}
+            </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <strong>QELVANTA.</strong>
+        <p>Discover More. Shop Better.</p>
+        <p>&copy; 2026 Qelvanta. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
