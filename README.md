@@ -87,4 +87,6 @@ Keep `.env`, database files, credentials, and production secret keys out of vers
 
 ## Project Status
 
-Developed as a portfolio project to practise Django web development, database models, authentication, session-based cart functionality, order processing, and inventory management.
+Completed as a portfolio project demonstrating Django web development, database management, user authentication, session-based shopping cart functionality, order processing, and product review features.
+
+**Purpose:** To demonstrate practical Python and Django development skills for entry-level software engineering roles.
