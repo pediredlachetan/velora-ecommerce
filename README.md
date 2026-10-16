@@ -2,6 +2,30 @@
 
 VELORA is a multi-category e-commerce web application built with Python and Django. It provides product discovery, customer accounts, shopping cart management, checkout, order tracking, and product reviews.
 
+
+## Screenshots
+
+### Homepage
+![VELORA Homepage](Homepage_1.png)
+
+### Product Listing
+![VELORA Product Listing](Homepage_2.png)
+![VELORA Product Listing](Homepage_3.png)
+
+### Product Details
+![VELORA Product Details](Product_detail_page-1.png)
+![VELORA Product Details](Product_detail_page-2.png)
+
+
+### Login Page
+![VELORA Login Page](Login_page.png)
+
+### Order Details
+![VELORA Order Details](Order_detail_page.png)
+
+---
+
+
 ## Features
 
 - Product listing, search, category filtering, sorting, and pagination
